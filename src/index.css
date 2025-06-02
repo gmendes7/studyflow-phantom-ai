@@ -54,10 +54,56 @@
   body {
     @apply bg-studyflow-dark text-foreground font-sans;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
   }
 
   html {
     @apply scroll-smooth;
+  }
+
+  /* Improve text readability */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white;
+    line-height: 1.2;
+  }
+
+  p {
+    @apply text-gray-200;
+    line-height: 1.8;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-studyflow-neon;
+  }
+
+  /* Better mobile touch targets */
+  button, a, input, select, textarea {
+    @apply touch-manipulation;
+  }
+
+  /* Ensure minimum text size on mobile */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -86,9 +132,43 @@
     animation: gradient 3s ease infinite;
   }
   
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .gradient-text {
+      background: white;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-text {
+      animation: none;
+    }
+    
+    .animate-float,
+    .animate-pulse-glow,
+    .animate-particle-float {
+      animation: none;
+    }
+  }
+  
   @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+  }
+  
+  /* Mobile optimizations */
+  .mobile-optimized {
+    @apply text-base leading-relaxed;
+  }
+  
+  @media (max-width: 640px) {
+    .mobile-optimized {
+      @apply text-lg leading-relaxed;
+    }
   }
 }
