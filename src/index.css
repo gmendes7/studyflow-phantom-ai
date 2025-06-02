@@ -186,7 +186,7 @@
   
   /* Enhanced interactive elements with better feedback */
   .interactive-element {
-    @apply transition-all duration-200 ease-out;
+    @apply transition-all duration-200 ease-out cursor-pointer;
     transform: scale(1);
   }
   
@@ -206,29 +206,37 @@
   
   /* Button states with clear visual feedback */
   .btn-primary {
-    @apply bg-gradient-to-r from-studyflow-neon to-studyflow-cyan text-white font-medium px-6 py-3 rounded-lg;
+    @apply bg-gradient-to-r from-studyflow-neon to-studyflow-cyan text-white font-medium px-6 py-3 rounded-lg cursor-pointer;
     @apply transition-all duration-200 ease-out;
-    @apply hover:scale-105 hover:shadow-lg hover:shadow-studyflow-neon/25;
+    @apply hover:scale-105 hover:shadow-lg hover:shadow-studyflow-neon/25 hover:opacity-90;
     @apply active:scale-95;
     @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-studyflow-neon;
     min-height: 44px;
   }
   
   .btn-secondary {
-    @apply border-2 border-studyflow-neon text-studyflow-neon bg-transparent font-medium px-6 py-3 rounded-lg;
+    @apply border-2 border-studyflow-neon text-studyflow-neon bg-transparent font-medium px-6 py-3 rounded-lg cursor-pointer;
     @apply transition-all duration-200 ease-out;
-    @apply hover:bg-studyflow-neon hover:text-studyflow-dark hover:scale-105;
+    @apply hover:bg-studyflow-neon hover:text-studyflow-dark hover:scale-105 hover:opacity-90;
     @apply active:scale-95;
     @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-studyflow-neon;
     min-height: 44px;
   }
   
-  /* Card components with better contrast */
+  /* Card components with better contrast and responsiveness */
   .card-elevated {
-    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg;
-    @apply hover:bg-white/15 hover:border-white/30;
+    @apply bg-transparent border border-white/20 rounded-lg;
+    @apply hover:bg-white/5 hover:border-white/30;
     @apply transition-all duration-300 ease-out;
-    @apply focus-within:bg-white/15 focus-within:border-studyflow-neon/50;
+    @apply focus-within:bg-white/5 focus-within:border-studyflow-neon/50;
+  }
+  
+  /* Feature cards with enhanced interactivity */
+  .feature-card {
+    @apply bg-transparent border border-white/20 rounded-lg p-6 cursor-pointer;
+    @apply transition-all duration-300 ease-in-out;
+    @apply hover:transform hover:-translate-y-2 hover:shadow-xl hover:shadow-studyflow-neon/25 hover:border-studyflow-neon/50;
+    @apply focus-within:transform focus-within:-translate-y-2 focus-within:shadow-xl focus-within:shadow-studyflow-neon/25 focus-within:border-studyflow-neon/50;
   }
   
   /* Text contrast improvements */
@@ -266,6 +274,7 @@
     min-height: 44px;
   }
   
+  /* Enhanced mobile responsiveness */
   @media (max-width: 640px) {
     .mobile-optimized {
       @apply text-lg leading-relaxed;
@@ -273,8 +282,27 @@
     
     .btn-primary,
     .btn-secondary {
-      @apply px-8 py-4 text-lg;
+      @apply px-8 py-4 text-lg w-full;
       min-height: 48px;
+    }
+    
+    .feature-card {
+      @apply w-full min-w-0;
+    }
+    
+    /* Improved touch targets for mobile */
+    .interactive-element {
+      min-height: 48px;
+      min-width: 48px;
+    }
+  }
+  
+  /* Enhanced responsive design for tablets */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .btn-primary,
+    .btn-secondary {
+      @apply px-6 py-3;
+      min-height: 44px;
     }
   }
   
@@ -298,5 +326,33 @@
   /* Success states */
   .success-state {
     @apply border-green-500 bg-green-500/10 text-green-100;
+  }
+  
+  /* Responsive flex layouts */
+  .responsive-flex {
+    @apply flex flex-col gap-4;
+  }
+  
+  @media (min-width: 640px) {
+    .responsive-flex {
+      @apply flex-row;
+    }
+  }
+  
+  /* Responsive grid layouts */
+  .responsive-grid {
+    @apply grid grid-cols-1 gap-6;
+  }
+  
+  @media (min-width: 640px) {
+    .responsive-grid {
+      @apply grid-cols-2;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .responsive-grid {
+      @apply grid-cols-4;
+    }
   }
 }
