@@ -61,25 +61,39 @@
     @apply scroll-smooth;
   }
 
-  /* Improve text readability */
+  /* Improved text readability with higher contrast */
   h1, h2, h3, h4, h5, h6 {
     @apply text-white;
     line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   p {
-    @apply text-gray-200;
+    @apply text-gray-100;
     line-height: 1.8;
   }
 
-  /* Focus styles for accessibility */
+  /* Enhanced focus styles for accessibility */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-studyflow-neon;
+    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.6);
+  }
+
+  /* Better focus indicators for interactive elements */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-2 outline-offset-2 outline-studyflow-neon;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.4);
   }
 
   /* Better mobile touch targets */
   button, a, input, select, textarea {
     @apply touch-manipulation;
+    min-height: 44px; /* WCAG minimum touch target size */
+    min-width: 44px;
   }
 
   /* Ensure minimum text size on mobile */
@@ -91,6 +105,7 @@
     p {
       font-size: 1rem;
       line-height: 1.6;
+      color: #f1f5f9; /* Higher contrast on mobile */
     }
     
     h1 {
@@ -105,11 +120,48 @@
       font-size: 1.5rem;
     }
   }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    body {
+      background: #000000;
+      color: #ffffff;
+    }
+    
+    p {
+      color: #ffffff;
+    }
+    
+    .gradient-text {
+      background: #ffffff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer components {
+  /* Enhanced glow effects with better accessibility */
   .glow-effect {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .glow-effect:hover,
+  .glow-effect:focus-visible {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
   }
   
   .text-glow {
@@ -132,27 +184,67 @@
     animation: gradient 3s ease infinite;
   }
   
-  /* High contrast mode support */
-  @media (prefers-contrast: high) {
-    .gradient-text {
-      background: white;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  /* Enhanced interactive elements with better feedback */
+  .interactive-element {
+    @apply transition-all duration-200 ease-out;
+    transform: scale(1);
   }
   
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    .gradient-text {
-      animation: none;
-    }
-    
-    .animate-float,
-    .animate-pulse-glow,
-    .animate-particle-float {
-      animation: none;
-    }
+  .interactive-element:hover {
+    transform: scale(1.02);
+  }
+  
+  .interactive-element:active {
+    transform: scale(0.98);
+  }
+  
+  .interactive-element:focus-visible {
+    transform: scale(1.02);
+    outline: 2px solid rgba(168, 85, 247, 0.8);
+    outline-offset: 2px;
+  }
+  
+  /* Button states with clear visual feedback */
+  .btn-primary {
+    @apply bg-gradient-to-r from-studyflow-neon to-studyflow-cyan text-white font-medium px-6 py-3 rounded-lg;
+    @apply transition-all duration-200 ease-out;
+    @apply hover:scale-105 hover:shadow-lg hover:shadow-studyflow-neon/25;
+    @apply active:scale-95;
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-studyflow-neon;
+    min-height: 44px;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-studyflow-neon text-studyflow-neon bg-transparent font-medium px-6 py-3 rounded-lg;
+    @apply transition-all duration-200 ease-out;
+    @apply hover:bg-studyflow-neon hover:text-studyflow-dark hover:scale-105;
+    @apply active:scale-95;
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-studyflow-neon;
+    min-height: 44px;
+  }
+  
+  /* Card components with better contrast */
+  .card-elevated {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg;
+    @apply hover:bg-white/15 hover:border-white/30;
+    @apply transition-all duration-300 ease-out;
+    @apply focus-within:bg-white/15 focus-within:border-studyflow-neon/50;
+  }
+  
+  /* Text contrast improvements */
+  .text-high-contrast {
+    @apply text-white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  }
+  
+  .text-medium-contrast {
+    @apply text-gray-100;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+  
+  .text-subtle {
+    @apply text-gray-200;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
   
   @keyframes gradient {
@@ -161,14 +253,50 @@
     100% { background-position: 0% 50%; }
   }
   
-  /* Mobile optimizations */
+  /* Skip link for screen readers */
+  .skip-link {
+    @apply absolute -top-40 left-6 bg-studyflow-neon text-studyflow-dark px-4 py-2 rounded;
+    @apply focus:top-6 transition-all duration-200;
+    z-index: 9999;
+  }
+  
+  /* Mobile optimizations with better touch targets */
   .mobile-optimized {
     @apply text-base leading-relaxed;
+    min-height: 44px;
   }
   
   @media (max-width: 640px) {
     .mobile-optimized {
       @apply text-lg leading-relaxed;
     }
+    
+    .btn-primary,
+    .btn-secondary {
+      @apply px-8 py-4 text-lg;
+      min-height: 48px;
+    }
+  }
+  
+  /* Loading states */
+  .loading-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  /* Error states */
+  .error-state {
+    @apply border-red-500 bg-red-500/10 text-red-100;
+  }
+  
+  /* Success states */
+  .success-state {
+    @apply border-green-500 bg-green-500/10 text-green-100;
   }
 }
