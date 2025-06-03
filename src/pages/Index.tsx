@@ -67,26 +67,26 @@ const Index = () => {
           <div className="container mx-auto text-center">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8 animate-float">
               <Sparkles className="h-4 w-4 text-studyflow-neon mr-2" aria-hidden="true" />
-              <span className="text-sm text-high-contrast">Powered by AI • Novo na educação</span>
+              <span className="text-sm text-white font-medium">Powered by AI • Novo na educação</span>
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="gradient-text">StudyFlow</span>
               <br />
-              <span className="text-glow text-high-contrast">Estude com IA</span>
+              <span className="text-glow text-white">Estude com IA</span>
             </h1>
             
-            <p className="text-lg sm:text-xl md:text-2xl text-medium-contrast mb-12 max-w-3xl mx-auto leading-relaxed mobile-optimized">
+            <p className="text-lg sm:text-xl md:text-2xl text-white mb-12 max-w-3xl mx-auto leading-relaxed mobile-optimized font-medium">
               Transforme seus estudos com inteligência artificial. 
               Planos personalizados, resumos inteligentes e mapas mentais que 
-              <span className="text-studyflow-ghost font-semibold"> aceleram seu aprendizado</span>.
+              <span className="text-studyflow-neon font-bold"> aceleram seu aprendizado</span>.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 w-full max-w-screen-lg mx-auto px-4">
               <Link to={user ? "/dashboard" : "/auth"} className="w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="btn-primary interactive-element w-full sm:w-auto cursor-pointer hover:opacity-90 focus:outline-2 focus:outline-studyflow-neon"
+                  className="bg-gradient-to-r from-studyflow-neon to-studyflow-cyan hover:opacity-90 text-white font-bold text-lg px-8 py-4 w-full sm:w-auto cursor-pointer shadow-lg hover:shadow-xl transition-all duration-200"
                   aria-label="Começar a usar o StudyFlow AI"
                 >
                   <Brain className="h-5 w-5 mr-2" aria-hidden="true" />
@@ -99,7 +99,7 @@ const Index = () => {
                 variant="outline" 
                 size="lg"
                 onClick={handleDemoClick}
-                className="btn-secondary interactive-element w-full sm:w-auto cursor-pointer hover:opacity-90 focus:outline-2 focus:outline-studyflow-neon"
+                className="border-2 border-white bg-black/30 backdrop-blur-sm text-white hover:bg-white hover:text-black font-bold text-lg px-8 py-4 w-full sm:w-auto cursor-pointer transition-all duration-200"
                 aria-label="Ver demonstração do StudyFlow AI"
               >
                 <Play className="h-5 w-5 mr-2" aria-hidden="true" />
@@ -114,7 +114,7 @@ const Index = () => {
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-medium-contrast group-hover:text-high-contrast transition-colors text-sm sm:text-base">
+                  <div className="text-white font-medium group-hover:text-studyflow-neon transition-colors text-sm sm:text-base">
                     {stat.label}
                   </div>
                 </div>
@@ -129,10 +129,10 @@ const Index = () => {
           <section className="py-20 px-4" role="region" aria-labelledby="features-heading">
             <div className="container mx-auto">
               <div className="text-center mb-16">
-                <h2 id="features-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-high-contrast">
+                <h2 id="features-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
                   <span className="gradient-text">Funcionalidades</span> Poderosas
                 </h2>
-                <p className="text-lg sm:text-xl text-medium-contrast max-w-2xl mx-auto mobile-optimized">
+                <p className="text-lg sm:text-xl text-white max-w-2xl mx-auto mobile-optimized font-medium">
                   Ferramentas inteligentes que se adaptam ao seu estilo de aprendizado
                 </p>
               </div>
@@ -151,10 +151,10 @@ const Index = () => {
                       <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                         <Icon className="h-8 w-8 text-white" aria-hidden="true" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-high-contrast group-hover:text-studyflow-neon transition-colors mb-3">
+                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-studyflow-neon transition-colors mb-3">
                         {feature.title}
                       </h3>
-                      <p className="text-medium-contrast leading-relaxed text-sm sm:text-base">
+                      <p className="text-white/90 leading-relaxed text-sm sm:text-base font-medium">
                         {feature.description}
                       </p>
                     </div>
@@ -178,14 +178,14 @@ const Index = () => {
                   Pronto para revolucionar seus estudos?
                 </h3>
                 
-                <p className="text-lg sm:text-xl text-medium-contrast mb-8 max-w-2xl mx-auto mobile-optimized">
+                <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl mx-auto mobile-optimized font-medium">
                   Junte-se a milhares de estudantes que já estão usando IA para estudar de forma mais inteligente
                 </p>
                 
                 <Link to={user ? "/dashboard" : "/auth"} className="w-full sm:w-auto inline-block">
                   <Button 
                     size="lg"
-                    className="btn-primary interactive-element w-full sm:w-auto cursor-pointer hover:opacity-90 focus:outline-2 focus:outline-studyflow-neon"
+                    className="bg-gradient-to-r from-studyflow-neon to-studyflow-cyan hover:opacity-90 text-white font-bold text-lg px-8 py-4 w-full sm:w-auto cursor-pointer shadow-lg hover:shadow-xl transition-all duration-200"
                     aria-label="Começar a usar gratuitamente"
                   >
                     <Star className="h-5 w-5 mr-2" aria-hidden="true" />
@@ -206,11 +206,11 @@ const Index = () => {
               <span className="text-2xl font-bold gradient-text">StudyFlow AI</span>
             </div>
             
-            <p className="text-medium-contrast mb-4">
-              Criado por <span className="text-studyflow-neon font-semibold">@schjneiderr</span> 👻
+            <p className="text-white font-medium mb-4">
+              Criado por <span className="text-studyflow-neon font-bold">@schjneiderr</span> 👻
             </p>
             
-            <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 text-medium-contrast" aria-label="Links do rodapé">
+            <nav className="flex flex-wrap justify-center gap-4 sm:gap-6 text-white font-medium" aria-label="Links do rodapé">
               <a 
                 href="#" 
                 className="hover:text-studyflow-neon transition-colors interactive-element focus-visible:text-studyflow-neon cursor-pointer min-h-[44px] flex items-center" 
@@ -252,7 +252,7 @@ const Index = () => {
               <Play className="h-6 w-6 mr-2 text-studyflow-neon" />
               Demonstração StudyFlow AI
             </DialogTitle>
-            <DialogDescription className="text-medium-contrast">
+            <DialogDescription className="text-white font-medium">
               Veja como nossa IA pode revolucionar seus estudos
             </DialogDescription>
           </DialogHeader>
@@ -265,18 +265,18 @@ const Index = () => {
                     <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mb-2`}>
                       <Icon className="h-5 w-5 text-white" />
                     </div>
-                    <h4 className="font-semibold text-high-contrast mb-1 text-sm">{feature.title}</h4>
-                    <p className="text-xs text-medium-contrast">{feature.description}</p>
+                    <h4 className="font-bold text-white mb-1 text-sm">{feature.title}</h4>
+                    <p className="text-xs text-white/80 font-medium">{feature.description}</p>
                   </div>
                 );
               })}
             </div>
             <div className="text-center">
-              <p className="text-medium-contrast mb-4">
+              <p className="text-white font-medium mb-4">
                 🚀 Demonstração completa em breve! Cadastre-se para ser notificado.
               </p>
               <Link to="/auth">
-                <Button className="btn-primary w-full sm:w-auto" onClick={() => setIsDemoOpen(false)}>
+                <Button className="bg-gradient-to-r from-studyflow-neon to-studyflow-cyan hover:opacity-90 text-white font-bold w-full sm:w-auto" onClick={() => setIsDemoOpen(false)}>
                   Cadastrar-se Agora
                 </Button>
               </Link>
