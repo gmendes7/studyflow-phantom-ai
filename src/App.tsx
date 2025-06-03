@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
+import Chat from "./pages/Chat";
 import Resumos from "./pages/Resumos";
 import Mapas from "./pages/Mapas";
 import Planner from "./pages/Planner";

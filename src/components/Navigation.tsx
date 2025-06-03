@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Brain, Menu, X, Home, BookOpen, Map, Calendar, Trophy, LogOut, User } from 'lucide-react';
+import { Brain, Menu, X, Home, BookOpen, Map, Calendar, Trophy, LogOut, User, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -14,6 +13,7 @@ const Navigation = () => {
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
     { path: '/dashboard', label: 'Dashboard', icon: BookOpen },
+    { path: '/chat', label: 'Chat IA', icon: MessageCircle },
     { path: '/resumos', label: 'Resumos', icon: BookOpen },
     { path: '/mapas', label: 'Mapas Mentais', icon: Map },
     { path: '/planner', label: 'Planner IA', icon: Calendar },
